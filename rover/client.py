@@ -1,3 +1,4 @@
+#!/usr/bin/python
 import io
 import socket
 import struct
@@ -6,7 +7,7 @@ import picamera
 
 # Connect a client socket to my_server:8000 (change my_server to the
 # hostname of your server)
-my_server = '192.168.1.12'
+my_server = '192.168.4.6'
 client_socket = socket.socket()
 client_socket.connect((my_server, 8000))
 
@@ -14,7 +15,7 @@ client_socket.connect((my_server, 8000))
 connection = client_socket.makefile('wb')
 try:
     camera = picamera.PiCamera()
-    camera.resolution = (640, 480)
+    camera.resolution = (480, 360)
     # Start a preview and let the camera warm up for 2 seconds
     camera.start_preview()
     time.sleep(2)
@@ -34,7 +35,7 @@ try:
         stream.seek(0)
         connection.write(stream.read())
         # If we've been capturing for more than 30 seconds, quit
-        # if time.time() - start > 30:
+        #if time.time() - start > 30:
         #    break
         # Reset the stream for the next capture
         stream.seek(0)
