@@ -44,6 +44,10 @@ def loco():
         choice = raw_input() # Select movement
         if choice in choices:
             print(choice)
+            # New lines of code to call arduino
+	    print('Calling Arduino')
+	    import call_arduino
+	    call_arduino. call_arduino()
         else:
             print('Invalid choice! Exit locomotion mode? y/n')
             choice = raw_input()
